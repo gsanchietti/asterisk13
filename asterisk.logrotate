@@ -1,0 +1,25 @@
+/var/log/asterisk/queue_log {
+	daily
+	missingok
+	rotate 30
+	notifempty
+	sharedscripts
+	create 0640 asterisk asterisk
+}
+
+/var/spool/mail/asterisk
+/var/log/asterisk/messages
+/var/log/asterisk/event_log
+/var/log/asterisk/full
+/var/log/asterisk/dtmf
+/var/log/asterisk/fail2ban {
+	daily
+	missingok
+	rotate 7
+	notifempty
+	sharedscripts
+	create 0640 asterisk asterisk
+	postrotate
+    	/usr/sbin/asterisk -rx 'logger reload' > /dev/null 2> /dev/null
+	endscript
+}
