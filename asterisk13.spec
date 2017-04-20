@@ -11,7 +11,7 @@ Version: 13.15.0
 Release: 1%{dist}%{?_without_optimizations:_debug}
 License: GPL
 Group: Utilities/System
-Source: asterisk-%{version}.tar.gz
+Source: https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-%{version}.tar.gz
 Source2: asterisk.logrotate
 Patch2: voicemail-splitopts.patch
 Patch3: voicemail-splitopts-odbcstorage.patch
