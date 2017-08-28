@@ -1138,6 +1138,7 @@ cd $RPM_BUILD_DIR
 %files devel
 %defattr(-, root, root)
 %{_includedir}/asterisk.h
+%{_includedir}/asterisk/alertpipe.h
 %{_includedir}/asterisk/spinlock.h
 %{_includedir}/asterisk/_private.h
 %{_includedir}/asterisk/abstract_jb.h
