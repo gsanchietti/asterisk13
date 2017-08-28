@@ -11,11 +11,11 @@ diff --git a/apps/app_queue.c b/apps/app_queue.c
 index 939a0e2..8fbd8c7 100644
 --- a/apps/app_queue.c
 +++ b/apps/app_queue.c
-@@ -1507,6 +1507,7 @@ struct member {
- 	int queuepos;                        /*!< In what order (pertains to certain strategies) should this member be called? */
+@@ -1512,6 +1512,7 @@
+ 	int callcompletedinsl;               /*!< Whether the current call was completed within service level */
+ 	time_t starttime;                    /*!< The time at which the member answered the current caller. */
  	time_t lastcall;                     /*!< When last successful call was hungup */
- 	unsigned int in_call:1;              /*!< True if member is still in call. (so lastcall is not actual) */
-+	time_t lastnoanswer;                 /*!<When last dial attempt timed out */
++        time_t lastnoanswer;                 /*!<When last dial attempt timed out */
  	struct call_queue *lastqueue;	     /*!< Last queue we received a call */
  	unsigned int dead:1;                 /*!< Used to detect members deleted in realtime */
  	unsigned int delme:1;                /*!< Flag to delete entry on reload */
@@ -130,15 +130,15 @@ index 939a0e2..8fbd8c7 100644
  				rna(orig, qe, o->chan, o->interface, o->member->membername, 1);
  			}
  		}
-@@ -6389,6 +6436,8 @@ static int try_calling(struct queue_ent *qe, struct ast_flags opts, char **opt_a
+@@ -6502,6 +6503,8 @@
+ 	char tmpid[256];
  	int forwardsallowed = 1;
  	int block_connected_line = 0;
- 	int callcompletedinsl;
 +        int nummems = 0;
-+	int numnoans = 0;
++        int numnoans = 0;
  	struct ao2_iterator memi;
  	struct queue_end_bridge *queue_end_bridge = NULL;
- 	struct ao2_iterator queue_iter; /* to iterate through all queues (for shared_lastcall)*/
+ 	int callcompletedinsl;
 @@ -6510,6 +6559,8 @@ static int try_calling(struct queue_ent *qe, struct ast_flags opts, char **opt_a
  			/* Put them in the list of outgoing thingies...  We're ready now.
  			   XXX If we're forcibly removed, these outgoing calls won't get
