@@ -8,7 +8,7 @@ Summary: Asterisk, The Open Source PBX
 Name: asterisk13
 Version: 13.17.0
 # reset release to 1 with each version bump
-Release: 1%{dist}%{?_without_optimizations:_debug}
+Release: 2%{dist}%{?_without_optimizations:_debug}
 License: GPL
 Group: Utilities/System
 Source: https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-%{version}.tar.gz
@@ -45,8 +45,8 @@ Requires: spandsp
 BuildRequires: spandsp-devel
 Requires: libical
 BuildRequires: libical-devel
-Requires: libsrtp
-BuildRequires: libsrtp-devel
+Requires: libsrtp15
+BuildRequires: libsrtp15-devel
 Requires: freeradius
 Requires: radiusclient-ng
 BuildRequires: radiusclient-ng-devel
