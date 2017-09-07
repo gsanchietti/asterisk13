@@ -8,7 +8,7 @@ Summary: Asterisk, The Open Source PBX
 Name: asterisk13
 Version: 13.17.0
 # reset release to 1 with each version bump
-Release: 2%{dist}%{?_without_optimizations:_debug}
+Release: 3%{dist}%{?_without_optimizations:_debug}
 License: GPL
 Group: Utilities/System
 Source: https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-%{version}.tar.gz
@@ -22,7 +22,6 @@ Patch8: ASTERISK-rb3984.patch
 BuildRoot: %{_tmppath}/asterisk-%{version}-root
 URL: http://www.asterisk.org
 Packager: Nethesis <info@nethesis.it>
-Provides: asterisk
 Conflicts: asterisk14
 Conflicts: asterisk16
 Conflicts: asterisk18
@@ -95,7 +94,6 @@ hardware, see http://www.asterisk.org
 %package core
 Summary: Asterisk core package without any "extras".
 Group: Utilities/System
-Provides: asterisk-core
 Provides: asterisk%{astapi}-core
 #Obsoletes: asterisk-core
 Conflicts: asterisk14-core
@@ -122,7 +120,6 @@ This package contains a base install of Asterisk without any "extras".
 %package alsa
 Summary: Alsa channel driver for Asterisk
 Group: Utilities/System
-Provides: asterisk-alsa
 Provides: asterisk%{astapi}-alsa
 #Obsoletes: asterisk-alsa
 %if "%{distname}" == "suse" || "%{distname}" == "sles"
@@ -146,7 +143,6 @@ Alsa channel driver for Asterisk
 %package snmp
 Summary: snmp resource module for Asterisk
 Group: Utilities/System
-Provides: asterisk-snmp
 Provides: asterisk%{astapi}-snmp
 #Obsoletes: asterisk-snmp
 %if "%{distname}" == "suse" || "%{distname}" == "sles"
@@ -171,7 +167,6 @@ snmp resource module for Asterisk
 %package pgsql
 Summary: Postgresql modules for Asterisk
 Group: Utilities/System
-Provides: asterisk-pgsql
 Provides: asterisk%{astapi}-pgsql
 #Obsoletes: asterisk-pgsql
 BuildRequires: postgresql-devel
@@ -190,7 +185,6 @@ Postgresql modules for Asterisk
 %package tds
 Summary: tds modules for Asterisk
 Group: Utilities/System
-Provides: asterisk-tds
 Provides: asterisk%{astapi}-tds
 #Obsoletes: asterisk-tds
 BuildRequires: freetds-devel
@@ -209,7 +203,6 @@ tds modules for Asterisk
 %package dahdi
 Summary: DAHDI channel driver for Asterisk
 Group: Utilities/System
-Provides: asterisk-dahdi
 Provides: asterisk%{astapi}-dahdi
 #Obsoletes: asterisk-dahdi
 Requires: %{name}-core = %{version}-%{release}
@@ -239,7 +232,6 @@ DAHDI channel driver for Asterisk
 %package misdn
 Summary: mISDN channel driver for Asterisk
 Group: Utilities/System
-Provides: asterisk-misdn
 Provides: asterisk%{astapi}-misdn
 #Obsoletes: asterisk-misdn
 Requires: %{name}-core = %{version}-%{release}
@@ -260,7 +252,6 @@ mISDN channel driver for Asterisk
 %package configs
 Summary: Basic configuration files for Asterisk
 Group: Utilities/System
-Provides: asterisk-configs
 Provides: asterisk%{astapi}-configs
 #Obsoletes: asterisk-configs
 Requires: %{name}-core = %{version}
@@ -276,7 +267,6 @@ The sample configuration files for Asterisk
 %package curl
 Summary: cURL application module for Asterisk
 Group: Utilities/System
-Provides: asterisk-curl
 Provides: asterisk%{astapi}-curl
 #Obsoletes: asterisk-curl
 BuildRequires: curl-devel
@@ -293,7 +283,6 @@ cURL application module for Asterisk
 %package devel
 Summary: Static libraries and header files for Asterisk development
 Group: Development/Libraries
-Provides: asterisk-devel
 Provides: asterisk%{astapi}-devel
 #Obsoletes: asterisk-devel
 Requires: %{name}-core = %{version}
@@ -308,7 +297,6 @@ plugins/modules
 %package doc
 Summary: Documentation files for Asterisk
 Group: Development/Libraries
-Provides: asterisk-doc
 Provides: asterisk%{astapi}-doc
 #Obsoletes: asterisk-doc
 Requires: %{name}-core = %{version}
@@ -324,7 +312,6 @@ The Documentation files for Asterisk
 %package ogg
 Summary: Ogg-Vorbis codec module for Asterisk
 Group: Utilities/System
-Provides: asterisk-ogg
 Provides: asterisk%{astapi}-ogg
 #Obsoletes: asterisk-ogg
 BuildRequires: libvorbis-devel libogg-devel
@@ -343,7 +330,6 @@ Asterisk format plugin for the Ogg-Vorbis codec
 %package speex
 Summary: Speex codec module for Asterisk
 Group: Utilities/System
-Provides: asterisk-speex
 Provides: asterisk%{astapi}-speex
 #Obsoletes: asterisk-speex
 BuildRequires: speex-devel
@@ -362,7 +348,6 @@ Asterisk format plugin for the Speex codec
 %package resample
 Summary: resampling codec module for Asterisk
 Group: Utilities/System
-Provides: asterisk-resample
 Provides: asterisk%{astapi}-resample
 #Obsoletes: asterisk-resample
 BuildRequires: libresample-devel
@@ -381,7 +366,6 @@ Asterisk plugin for the resample codec
 %package odbc
 Summary: Open Database Connectivity (ODBC) drivers for Asterisk
 Group: Utilities/System
-Provides: asterisk-odbc
 Provides: asterisk%{astapi}-odbc
 #Obsoletes: asterisk-odbc
 BuildRequires: unixODBC-devel
@@ -400,7 +384,6 @@ ODBC drivers for Asterisk
 %package sqlite3
 Summary: sqlite3 drivers for Asterisk
 Group: Utilities/System
-Provides: asterisk-sqlite3
 Provides: asterisk%{astapi}-sqlite3
 #Obsoletes: asterisk-sqlite3
 BuildRequires: sqlite-devel
@@ -417,9 +400,7 @@ sqlite3 drivers for Asterisk
 %package voicemail
 Summary: Voicemail with file storage module for Asterisk
 Group: Utilities/System
-Provides: asterisk-voicemail = %{version}-%{release}
 Provides: asterisk%{astapi}-voicemail
-Provides: asterisk-voicemail-filestorage = %{version}-%{release}
 Provides: asterisk%{astapi}-voicemail-filestorage
 #Obsoletes: asterisk-voicemail
 #Obsoletes: asterisk-voicemail-filestorage
@@ -439,7 +420,6 @@ Voicemail with file storage module for Asterisk
 %package voicemail-odbcstorage
 Summary: Voicemail with ODBC storage module for Asterisk
 Group: Utilities/System
-Provides: asterisk-voicemail-odbcstorage = %{version}-%{release}
 Provides: asterisk%{astapi}-voicemail-odbcstorage
 #Obsoletes: asterisk-voicemail-odbcstorage
 BuildRequires: unixODBC-devel
@@ -461,7 +441,6 @@ Voicemail with ODBC storage module for Asterisk
 %package voicemail-imapstorage
 Summary: Voicemail with IMAP storage module for Asterisk
 Group: Utilities/System
-Provides: asterisk-voicemail-imapstorage = %{version}-%{release}
 Provides: asterisk%{astapi}-voicemail-imapstorage
 #Obsoletes: asterisk-voicemail-imapstorage
 %if "%{distname}" == "suse" || "%{distname}" == "sles"
@@ -487,7 +466,6 @@ Voicemail with IMAP storage module for Asterisk
 Summary: Asterisk-addons package.
 Group: Utilities/System
 Requires: asterisk%{astapi}-addons-core = %{version}-%{release}
-Provides: asterisk-addons
 Provides: asterisk%{astapi}-addons
 
 Requires: %{name}-addons-core = %{version}-%{release}
@@ -518,9 +496,7 @@ This package contains a base install of Asterisk-addons without any "extras".
 %package addons-core
 Summary: Asterisk-addons core package.
 Group: Utilities/System
-Provides: asterisk-gplonly
 Requires: asterisk%{astapi}-core = %{version}-%{release}
-Provides: asterisk-addons-core
 Provides: asterisk%{astapi}-addons-core
 
 %description addons-core
@@ -537,7 +513,6 @@ Group: Utilities/System
 BuildRequires: mysql-devel
 Requires: mysql
 Requires: %{name}-addons-core = %{version}-%{release}
-Provides: asterisk-addons-mysql
 Provides: asterisk%{astapi}-addons-mysql
 
 %description addons-mysql
@@ -555,7 +530,6 @@ Group: Utilities/System
 BuildRequires: bluez-libs-devel
 Requires: bluez-libs
 Requires: %{name}-core = %{version}-%{release}
-Provides: asterisk-addons-bluetooth
 Provides: asterisk%{astapi}-addons-bluetooth
 
 %description addons-bluetooth
@@ -571,7 +545,6 @@ bluetooth modules for Asterisk
 Summary: chan_ooh323 module for Asterisk
 Group: Utilities/System
 Requires: %{name}-core = %{version}-%{release}
-Provides: asterisk-addons-ooh323
 Provides: asterisk%{astapi}-addons-ooh323
 
 %description addons-ooh323
