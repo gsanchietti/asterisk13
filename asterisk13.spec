@@ -1445,6 +1445,10 @@ cd $RPM_BUILD_DIR
 %endif
 
 %changelog
+* Wed Nov 08 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> 13.17.2-1
+- Update Asterisk 13 packages - NethServer/dev#5375
+- Security fix: http://downloads.asterisk.org/pub/security/AST-2017-008.html
+
 * Fri Jun 13 2014 Derek Carter <derek.carter@schmoozecom.com> 12.3.2-1
 - Version Bump
 
