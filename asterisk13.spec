@@ -3,6 +3,7 @@
 
 #%define docdir /usr/share/doc/asterisk
 %define logdir /var/log
+%define _without_misdn 1
 
 Summary: Asterisk, The Open Source PBX
 Name: asterisk13
