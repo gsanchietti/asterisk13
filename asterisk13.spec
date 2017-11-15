@@ -8,7 +8,7 @@ Summary: Asterisk, The Open Source PBX
 Name: asterisk13
 Version: 13.17.2
 # reset release to 1 with each version bump
-Release: 1%{dist}%{?_without_optimizations:_debug}
+Release: 2%{dist}%{?_without_optimizations:_debug}
 License: GPL
 Group: Utilities/System
 Source: https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-%{version}.tar.gz
@@ -621,7 +621,7 @@ mv -f $RPM_BUILD_ROOT/var/lib/asterisk/documentation/thirdparty/*xml $RPM_BUILD_
 %pre core
 # Make sure the 'asterisk' user exists
 %{_sbindir}/groupadd -r asterisk &>/dev/null || :
-%{_sbindir}/useradd  -r -s /bin/bash -d /var/lib/asterisk -M -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %post core
 ldconfig
@@ -1445,6 +1445,9 @@ cd $RPM_BUILD_DIR
 %endif
 
 %changelog
+* Wed Nov 15 2017 Stefano Fancello <stefano.fancello@nethesis.it> 13.17.2-2
+- Change Asterisk user home from /var/lib/asterisk to /home/asterisk
+
 * Wed Nov 08 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> 13.17.2-1
 - Update Asterisk 13 packages - NethServer/dev#5375
 - Security fix: http://downloads.asterisk.org/pub/security/AST-2017-008.html
