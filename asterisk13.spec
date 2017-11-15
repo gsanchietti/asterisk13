@@ -621,7 +621,7 @@ mv -f $RPM_BUILD_ROOT/var/lib/asterisk/documentation/thirdparty/*xml $RPM_BUILD_
 %pre core
 # Make sure the 'asterisk' user exists
 %{_sbindir}/groupadd -r asterisk &>/dev/null || :
-%{_sbindir}/useradd  -r -s /bin/bash -d /var/lib/asterisk -M -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %post core
 ldconfig
