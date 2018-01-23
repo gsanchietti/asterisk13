@@ -7,7 +7,6 @@
 	create 0640 asterisk asterisk
 }
 
-/var/spool/mail/asterisk
 /var/log/asterisk/messages
 /var/log/asterisk/event_log
 /var/log/asterisk/full
