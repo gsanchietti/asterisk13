@@ -9,7 +9,7 @@ Summary: Asterisk, The Open Source PBX
 Name: asterisk13
 Version: 13.17.2
 # reset release to 1 with each version bump
-Release: 2%{dist}%{?_without_optimizations:_debug}
+Release: 3%{?dist}
 License: GPL
 Group: Utilities/System
 Source: https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/asterisk-%{version}.tar.gz
@@ -1446,6 +1446,9 @@ cd $RPM_BUILD_DIR
 %endif
 
 %changelog
+* Thu Jan 25 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 13.17.2-3-1
+- PBX: Asterisk logs aren't rotated - Bug NethServer/dev#5411
+
 * Wed Nov 15 2017 Stefano Fancello <stefano.fancello@nethesis.it> 13.17.2-2
 - Change Asterisk user home from /var/lib/asterisk to /home/asterisk
 
